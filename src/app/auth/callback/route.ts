@@ -12,7 +12,9 @@ export async function GET(request: NextRequest) {
     if (!error) {
       return NextResponse.redirect(`${origin}${next}`)
     }
+    const msg = encodeURIComponent(error.message)
+    return NextResponse.redirect(`${origin}/login?error=auth&msg=${msg}`)
   }
 
-  return NextResponse.redirect(`${origin}/login?error=auth`)
+  return NextResponse.redirect(`${origin}/login?error=nocode`)
 }
