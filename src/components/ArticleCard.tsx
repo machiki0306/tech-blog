@@ -10,15 +10,17 @@ export default function ArticleCard({ article }: Props) {
   const authorName = article.profiles?.username ?? 'Anonymous'
 
   return (
-    <article className="border-b border-gray-200 py-5">
+    <article className="bg-white rounded-lg px-6 py-5 hover:shadow-md transition-shadow">
       <Link href={`/articles/${article.id}`} className="group">
-        <h2 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 mb-1">
+        <h2 className="text-base font-bold text-gray-900 group-hover:text-blue-500 transition-colors mb-2 leading-snug">
           {article.title}
         </h2>
       </Link>
-      <p className="text-sm text-gray-500">
-        {authorName} · {date}
-      </p>
+      <div className="flex items-center gap-2 text-xs text-gray-400">
+        <span className="font-medium text-gray-500">{authorName}</span>
+        <span>·</span>
+        <span>{date}</span>
+      </div>
     </article>
   )
 }
